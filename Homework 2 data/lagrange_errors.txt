@@ -1,0 +1,2 @@
+Training Error 4.470680610657075e+71
+Testing Error 1.2804997847860263e+71
