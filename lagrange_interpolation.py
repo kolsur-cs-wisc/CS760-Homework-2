@@ -8,7 +8,7 @@ def add_noise(samples, standard_deviation):
     return samples_with_noise
 
 def error(labels, predictions):
-    return np.square(np.subtract(labels, predictions)).mean()
+    return np.log(np.square(np.subtract(labels, predictions)).mean())
 
 def main():
     train_samples = np.random.uniform(-2.0, 2.0, 100)
@@ -48,11 +48,11 @@ def main():
     np.savetxt(f'Homework 2 data/lagrange_test_errors_noise.txt', test_errors_noisy_samples, delimiter=' ', fmt='%s')
 
     standard_deviations = np.array(train_errors_noisy_samples)[:,0]
-    log_error_values_train = np.log(np.array(train_errors_noisy_samples)[:,1])
+    log_error_values_train = np.array(train_errors_noisy_samples)[:,1]
 
     plt.plot(standard_deviations, log_error_values_train, label = 'Training Error')
 
-    log_error_values_test = np.log(np.array(test_errors_noisy_samples)[:,1])
+    log_error_values_test = np.array(test_errors_noisy_samples)[:,1]
 
     plt.plot(standard_deviations, log_error_values_test, label = 'Testing Error')
     plt.xlabel("Standard Deviation for White Noise")
